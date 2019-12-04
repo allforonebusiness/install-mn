@@ -43,10 +43,10 @@ Now you need to get the coins to run a masternode.  Remember, you will need a li
 * Type a label for this address in the `Label` field. If you are getting coins from an exchange, use a label like `From Graviex` or if you are buying in presale use a lable like `From Presale`.
 * Click the `Request Payment` button.
 
-![Create Receiving Address Screen 1/2](https://github.com/BadFerret/MasterNode-Script/raw/master/images/SectionBStep1.jpg "Create Receiving Address 1/2")
+![Create Receiving Address Screen 1/2](https://github.com/allforonebusiness/install-mn/raw/master/images/SectionBStep1.jpg "Create Receiving Address 1/2")
 * A new window will pop up, in that window, you will see an address labelled `address`.  This is the address you will receive your coins on. Click the `Copy Address` button at the bottom of the window to copy the address to your clipboard. If you are withdrawing from the exchange, withdraw to this address.  If you are buying from presale, give this address to the person selling you the coins.
 
-![Create Receiving Address Screen 2/2](https://github.com/BadFerret/MasterNode-Script/raw/master/images/SectionBStep1-2.jpg "Create Receiving Address 2/2")
+![Create Receiving Address Screen 2/2](https://github.com/allforonebusiness/install-mn/raw/master/images/SectionBStep1-2.jpg "Create Receiving Address 2/2")
 
   *NOTE: Always send a small amount of coins to your address first to test it.  If the test is successful, then send the full amount.  Meaning, if you are withdrawing from an exchange, just withdraw 1 coin.  If you receive that coin in your wallet, then withdraw the rest of the coins.
 * Once you have at least 1000.01 coins in your wallet, you can move on the the next section.  
@@ -61,19 +61,19 @@ In this section you will be sending yourself exactly 1000 coins in one single tr
 * Click the `Request Payment` button.
 * A new window will pop up, in that window, you will see an address labelled `address`.  This will be your masternode address and it is where you will send the 1000 coins. Click the `Copy Address` button at the bottom of the window to copy the address to your clipboard.
 
-![Create MN Address](https://github.com/BadFerret/MasterNode-Script/raw/master/images/SectionCStep1.jpg "Create MN Address")
+![Create MN Address](https://github.com/allforonebusiness/install-mn/raw/master/images/SectionCStep1.jpg "Create MN Address")
 ***
 
 ***Step 2***
 * Go to the `Send` tab in the wallet and paste the address from your clipboard into the `Pay To` field.  The `Label` field should automatically fill in with `MN` (or whatever you labelled your masternode address).  If it does not autofill with the masternode address label, then do not continue as you will not be sending the coins to yourself, try step 1 above again.
 
-![Fill In Send Fields](https://github.com/BadFerret/MasterNode-Script/raw/master/images/SectionCStep2.jpg "Fill In Send Fields")
+![Fill In Send Fields](https://github.com/allforonebusiness/install-mn/raw/master/images/SectionCStep2.jpg "Fill In Send Fields")
 ***
 
 ***Step 3***
 * Enter exactly 1000 in the `Amount` box. And then click the `Send` button.
 
-![Send Collateral Coins](https://github.com/BadFerret/MasterNode-Script/raw/master/images/SectionCStep3.jpg "Send Collateral Coins")
+![Send Collateral Coins](https://github.com/allforonebusiness/install-mn/raw/master/images/SectionCStep3.jpg "Send Collateral Coins")
 ***
 
 ## Section D: Creating the VPS within [Vultr](https://www.vultr.com/?ref=8337866-4F) 
@@ -89,21 +89,21 @@ In this section you will be sending yourself exactly 1000 coins in one single tr
 ***Step 3*** 
 * Choose "Cloud Compute" option and then choose a server location (preferably somewhere close to you)
 
-![Create VPS Step 3](https://github.com/BadFerret/MasterNode-Script/raw/master/images/SectionDStep3.jpg "Create VPS Step 3")
+![Create VPS Step 3](https://github.com/allforonebusiness/install-mn/raw/master/images/SectionDStep3.jpg "Create VPS Step 3")
 ***
 
 ***Step 4***
 * Choose a server type: Ubuntu 16.04
 * Choose a server size: $5/month is sufficient
 
-![Create VPS Step 4](https://github.com/BadFerret/MasterNode-Script/raw/master/images/SectionDStep4.jpg "Create VPS Step 4")
+![Create VPS Step 4](https://github.com/allforonebusiness/install-mn/raw/master/images/SectionDStep4.jpg "Create VPS Step 4")
 ***
 
 ***Step 5*** 
 * Set a Server Hostname (use any name you want to help you remember this VPS. You can use the coins name to help you remember this server has AFO on it, but in the future you can add more coins to this VPS, so you may simply want to name it Ubuntu1601_1 if you plan to do that)
 * Click "Deploy now"
 
-![Create VPS Step 5](https://github.com/BadFerret/MasterNode-Script/raw/master/images/SectionDStep5.jpg "Create VPS Step 5")
+![Create VPS Step 5](https://github.com/allforonebusiness/install-mn/raw/master/images/SectionDStep5.jpg "Create VPS Step 5")
 ***
 
 ## Section E: Downloading and installing BitVise. 
@@ -125,7 +125,7 @@ In this section you will be sending yourself exactly 1000 coins in one single tr
 * In the middle of the screen, click the link to your VPS you jsut created
 * Here you can find your VPS IP and password for use in the following steps. To copy the IP or the password to your clipboard when needed in following steps, click the `copy` button for each one (when needed).
 
-![VPS IP and Password](https://github.com/BadFerret/MasterNode-Script/raw/master/images/SectionFStep1.jpg "VPS IP and Password")
+![VPS IP and Password](https://github.com/allforonebusiness/install-mn/raw/master/images/SectionFStep1.jpg "VPS IP and Password")
 ***
 
 ***Step 2***
@@ -143,13 +143,13 @@ In this section you will be sending yourself exactly 1000 coins in one single tr
 * Click the `Save Profile` button to save this information to easily log in the next time
 * Click the `Log In` button to log into the VPS
 
-![Configure Bitvise](https://github.com/BadFerret/MasterNode-Script/raw/master/images/SectionFStep3.jpg "Configure Bitvise")
+![Configure Bitvise](https://github.com/allforonebusiness/install-mn/raw/master/images/SectionFStep3.jpg "Configure Bitvise")
 ***
 
 ***Step 4***
 * Paste the code below into the Bitvise terminal then press enter (it will just go to a new line because it is just downloading a small script)
 
-`wget -q https://raw.githubusercontent.com/BadFerret/MasterNode-Script/master/AFO_mn_install.sh`
+`wget -q https://raw.githubusercontent.com/allforonebusiness/install-mn/master/AFO_mn_install.sh`
 
 ***
 
@@ -198,7 +198,7 @@ In this section you will be sending yourself exactly 1000 coins in one single tr
   * `MasternodeOutputsTXHash` - This value is what you get when you typed `getmasternodeoutputs` in your local cold wallet
   * `MasternodeOutputsIDX` - This value is what you get when you typed `getmasternodeoutputs` in your local cold wallet
   
-![Configure Masternode.conf file](https://github.com/BadFerret/MasterNode-Script/raw/master/images/SectionGStep3.jpg "Configure Masternode.conf file")
+![Configure Masternode.conf file](https://github.com/allforonebusiness/install-mn/raw/master/images/SectionGStep3.jpg "Configure Masternode.conf file")
 
 * Save the masternode.conf file and close it.
 ***
@@ -212,7 +212,7 @@ In this section you will be sending yourself exactly 1000 coins in one single tr
 * Change the `Type` dropdown box to show only the transactions `To Yourself`
 * Hover over the top transaction and make sure it says it has more than 16 confirmations (any number over 15 is fine).  If it does not yet have 15 confirmations, then wait a few minutes and check it again. Once it has at least 16 confirmations, move to next step.
 
-![Verify 15 confirmations](https://github.com/BadFerret/MasterNode-Script/raw/master/images/SectionGStep4.jpg "Verify 15 confirmations")
+![Verify 15 confirmations](https://github.com/allforonebusiness/install-mn/raw/master/images/SectionGStep4.jpg "Verify 15 confirmations")
 ***
 
 ***Step 6***
@@ -230,5 +230,5 @@ In this section you will be sending yourself exactly 1000 coins in one single tr
 `allforonebusiness-cli getmasternodestatus`
 * It should display that the masternode was successfully started.  If you do not receive the message in the screenshot below that it was started repeat step 7 and 8 again. If after 2 or 3 attempt, it does not report as successfully started on the VPS, then ask for help in the discord server.
 
-![Verify Masternode on VPS](https://github.com/BadFerret/MasterNode-Script/raw/master/images/SectionGStep8.jpg "Verify Masternode on VPS")
+![Verify Masternode on VPS](https://github.com/allforonebusiness/install-mn/raw/master/images/SectionGStep8.jpg "Verify Masternode on VPS")
 ***
