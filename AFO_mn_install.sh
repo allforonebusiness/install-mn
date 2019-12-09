@@ -4,9 +4,12 @@ CONFIG_FILE='allforonebusiness.conf'
 CONFIGFOLDER='/root/.allforonebusiness'
 COIN_DAEMON='/usr/local/bin/allforonebusinessd'
 COIN_CLI='/usr/local/bin/allforonebusiness-cli'
-COIN_DAEMON_REPO='https://github.com/allforonebusiness/binaries-linux-16.04/raw/master/allforonebusinessd'
-COIN_CLI_REPO='https://github.com/allforonebusiness/binaries-linux-16.04/raw/master/allforonebusiness-cli'
-COIN_TX_REPO='https://github.com/allforonebusiness/binaries-linux-16.04/raw/master/allforonebusiness-tx'
+COIN_DAEMON_REPO_16='https://github.com/allforonebusiness/binaries-linux-16.04/raw/master/allforonebusinessd'
+COIN_CLI_REPO_16='https://github.com/allforonebusiness/binaries-linux-16.04/raw/master/allforonebusiness-cli'
+COIN_TX_REPO_16='https://github.com/allforonebusiness/binaries-linux-16.04/raw/master/allforonebusiness-tx'
+COIN_DAEMON_REPO_18='https://github.com/allforonebusiness/binaries-linux-18.04/raw/master/allforonebusinessd'
+COIN_CLI_REPO_18='https://github.com/allforonebusiness/binaries-linux-18.04/raw/master/allforonebusiness-cli'
+COIN_TX_REPO_18='https://github.com/allforonebusiness/binaries-linux-18.04/raw/master/allforonebusiness-tx'
 COIN_NAME='allforonebusiness'
 COIN_PORT=11888
 
@@ -36,13 +39,13 @@ progressfilt () {
   done
 }
 
-function compile_node() {
+function compile_node_16() {
   echo -e "Prepare to download $COIN_NAME"
   TMP_FOLDER=$(mktemp -d)
   cd $TMP_FOLDER
-  wget --progress=bar:force $COIN_DAEMON_REPO 2>&1 | progressfilt
-  wget --progress=bar:force $COIN_CLI_REPO 2>&1 | progressfilt
-  wget --progress=bar:force $COIN_TX_REPO 2>&1 | progressfilt
+  wget --progress=bar:force $COIN_DAEMON_REPO_16 2>&1 | progressfilt
+  wget --progress=bar:force $COIN_CLI_REPO_16 2>&1 | progressfilt
+  wget --progress=bar:force $COIN_TX_REPO_16 2>&1 | progressfilt
   compile_error
   chmod +x $COIN_NAME*
   cp $COIN_NAME* /usr/local/bin
@@ -51,6 +54,23 @@ function compile_node() {
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
 }
+
+function compile_node_18() {
+  echo -e "Prepare to download $COIN_NAME"
+  TMP_FOLDER=$(mktemp -d)
+  cd $TMP_FOLDER
+  wget --progress=bar:force $COIN_DAEMON_REPO_18 2>&1 | progressfilt
+  wget --progress=bar:force $COIN_CLI_REPO_18 2>&1 | progressfilt
+  wget --progress=bar:force $COIN_TX_REPO_18 2>&1 | progressfilt
+  compile_error
+  chmod +x $COIN_NAME*
+  cp $COIN_NAME* /usr/local/bin
+  compile_error
+  cd -
+  rm -rf $TMP_FOLDER >/dev/null 2>&1
+  clear
+}
+
 
 function configure_systemd() {
   cat << EOF > /etc/systemd/system/$COIN_NAME.service
@@ -244,8 +264,22 @@ if [ -n "$(pidof $COIN_DAEMON)" ] || [ -e "$COIN_DAEMOM" ] ; then
 fi
 }
 
-function prepare_system() {
-echo -e "Prepare the system to install ${GREEN}$COIN_NAME${NC} master node."
+function prepare_system_18() {
+echo -e "Prepare the system to install ${GREEN}$COIN_NAME${NC} master node on Ubuntu 18.04."
+apt-get update >/dev/null 2>&1
+DEBIAN_FRONTEND=noninteractive apt-get update > /dev/null 2>&1
+DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -y -qq upgrade >/dev/null 2>&1
+sudo apt-get install -y build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils python3 libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-test-dev libboost-thread-dev libboost-all-dev libboost-program-options-dev
+sudo apt-get install -y libminiupnpc-dev libzmq3-dev libprotobuf-dev protobuf-compiler unzip software-properties-common
+echo -e "${PURPLE}Adding bitcoin PPA repository"
+apt-add-repository -y ppa:bitcoin/bitcoin >/dev/null 2>&1
+echo -e "Installing required packages, it may take some time to finish.${NC}"
+apt-get update >/dev/null 2>&1
+sudo apt-get install -y libdb4.8-dev libdb4.8++-dev >/dev/null 2>&1
+}
+
+function prepare_system_16() {
+echo -e "Prepare the system to install ${GREEN}$COIN_NAME${NC} master node on Ubuntu 16.04."
 apt-get update >/dev/null 2>&1
 DEBIAN_FRONTEND=noninteractive apt-get update > /dev/null 2>&1
 DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -y -qq upgrade >/dev/null 2>&1
@@ -260,6 +294,7 @@ build-essential libtool autoconf libssl-dev libboost-dev libboost-chrono-dev lib
 libboost-system-dev libboost-test-dev libboost-thread-dev sudo automake git wget curl libdb4.8-dev bsdmainutils libdb4.8++-dev \
 libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev  libdb5.3++ unzip libzmq5 >/dev/null 2>&1
 }
+
 
 function important_information() {
  echo
@@ -304,6 +339,16 @@ function setup_node() {
 clear
 
 checks
-prepare_system
-compile_node
+if [[ $UBUNTU_VERSION == 18 ]]
+then
+  prepare_system_18
+else
+  prepare_system_16
+fi
+if [[ $UBUNTU_VERSION == 18 ]]
+then
+  compile_node_18
+else
+  compile_node_16
+fi
 setup_node 
