@@ -1,6 +1,6 @@
 ![Logo](https://allforonebusiness.org/wp-content/uploads/2018/12/Logo_allforone.png)
 # All For One Business Masternode Setup Guide
-This guide will assist you in setting up a All For One Business Masternode on a Linux Server running Ubuntu 16.04. (this may also work on Ubuntu 18.04, but 16.04 is the suggested version)
+This guide will assist you in setting up a All For One Business Masternode on a Linux Server running Ubuntu 16.04.
 
 This guide will show you the safest setup for running a masternode.  This type of setup is known as a Hot/Cold wallet setup.  In this type setup you will have 2 wallets (one with the coins, and one without the coins).  It is the safest setup because your coins will reside in a "cold" wallet ("cold" means that it does not need to constantly be connected to the internet). In this setup, there is very little risk of someone hacking onto your wallet and taking your coins.
 
