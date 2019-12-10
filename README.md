@@ -180,7 +180,7 @@ In this section you will be sending yourself exactly 1000 coins in one single tr
 # Section G: Connecting & Starting the masternode 
 
 ***Step 1***
-* Open your local cold wallet (the Windows, Mac, or Linux wallet you installed in Section 1 at the beginning of this tutorial).  Go to `Tools`->`Debug Monitor` on the top menu bar.  Type `getmasternodeoutputs` into the textbox at bottom and hit the enter key on the keyboard.  Leave this window open and move it to the side.
+* Open your local cold wallet (the Windows, Mac, or Linux wallet you installed in Section 1 at the beginning of this tutorial).  Go to `Tools`->`Debug Console` on the top menu bar.  Type `getmasternodeoutputs` into the textbox at bottom and hit the enter key on the keyboard.  Leave this window open and move it to the side.
 ***
 
 ***Step 2***
