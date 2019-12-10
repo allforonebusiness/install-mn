@@ -8,7 +8,7 @@ If you require further assistance contact the support team @ [Discord](https://d
 ***
 ## Requirements
 1) **1,001 AFO coins. (1000.01 coins will work, but it is simpler to say 1001 is required)**
-2) **A Vultr VPS running Linux Ubuntu 16.04. (Ubuntu 18.04 may work, but it is suggested to use 16.04)**
+2) **A Vultr VPS running Linux Ubuntu 16.04.**
 3) **A Windows, Mac, or Linux QT wallet running on a local machine (like your home computer).**
 4) **An SSH client such as [Bitvise](https://dl.bitvise.com/BvSshClient-Inst.exe)**
 ***
@@ -28,7 +28,7 @@ If you require further assistance contact the support team @ [Discord](https://d
   * Windows 32bit (https://github.com/allforonebusiness/binaries-windows32bit/raw/master/allforonebusiness-3.4.0-win32-setup.exe)
   * Windows 64bit (https://github.com/allforonebusiness/binaries-windows/raw/master/allforonebusiness-qt.exe)
   * Macintosh (https://github.com/allforonebusiness/binaries-macOS/raw/master/allforonebusiness-qt.dmg)
-  * Linux (https://github.com/allforonebusiness/binaries-linux/raw/master/allforonebusiness-qt)
+  * Linux (https://github.com/allforonebusiness/binaries-linux-16.04/raw/master/allforonebusiness-qt)
 ***
 
 ***Step 2***
