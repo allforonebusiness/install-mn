@@ -4,12 +4,8 @@ CONFIG_FILE='allforonebusiness.conf'
 CONFIGFOLDER='/root/.allforonebusiness'
 COIN_DAEMON='/usr/local/bin/allforonebusinessd'
 COIN_CLI='/usr/local/bin/allforonebusiness-cli'
-COIN_DAEMON_REPO_16='https://github.com/allforonebusiness/binaries-linux-16.04/raw/master/allforonebusinessd'
-COIN_CLI_REPO_16='https://github.com/allforonebusiness/binaries-linux-16.04/raw/master/allforonebusiness-cli'
-COIN_TX_REPO_16='https://github.com/allforonebusiness/binaries-linux-16.04/raw/master/allforonebusiness-tx'
-COIN_DAEMON_REPO_18='https://github.com/allforonebusiness/binaries-linux-18.04/raw/master/allforonebusinessd'
-COIN_CLI_REPO_18='https://github.com/allforonebusiness/binaries-linux-18.04/raw/master/allforonebusiness-cli'
-COIN_TX_REPO_18='https://github.com/allforonebusiness/binaries-linux-18.04/raw/master/allforonebusiness-tx'
+COIN_REPO_16='https://github.com/allforonebusiness/allforonebusiness/releases/download/4.1.2.1/AFO_4.1.2.1_Linux1604_daemon.tar.gz'
+COIN_REPO_18='https://github.com/allforonebusiness/allforonebusiness/releases/download/4.1.2.1/AFO_4.1.2.1_Linux1804_daemon.tar.gz'
 COIN_NAME='allforonebusiness'
 COIN_PORT=11888
 
@@ -43,10 +39,12 @@ function compile_node_16() {
   echo -e "Prepare to download $COIN_NAME"
   TMP_FOLDER=$(mktemp -d)
   cd $TMP_FOLDER
-  wget --progress=bar:force $COIN_DAEMON_REPO_16 2>&1 | progressfilt
-  wget --progress=bar:force $COIN_CLI_REPO_16 2>&1 | progressfilt
-  wget --progress=bar:force $COIN_TX_REPO_16 2>&1 | progressfilt
+  wget $COIN_REPO_16 2>&1
   compile_error
+  COIN_ZIP_16=$(echo $COIN_REPO_16 | awk -F'/' '{print $NF}')
+  tar xvzf $COIN_ZIP_16 >/dev/null 2>&1
+  compile_error
+  rm -f $COIN_ZIP_16 >/dev/null 2>&1
   chmod +x $COIN_NAME*
   cp $COIN_NAME* /usr/local/bin
   compile_error
@@ -59,10 +57,12 @@ function compile_node_18() {
   echo -e "Prepare to download $COIN_NAME"
   TMP_FOLDER=$(mktemp -d)
   cd $TMP_FOLDER
-  wget --progress=bar:force $COIN_DAEMON_REPO_18 2>&1 | progressfilt
-  wget --progress=bar:force $COIN_CLI_REPO_18 2>&1 | progressfilt
-  wget --progress=bar:force $COIN_TX_REPO_18 2>&1 | progressfilt
+  wget $COIN_REPO_18 2>&1
   compile_error
+  COIN_ZIP_16=$(echo $COIN_REPO_18 | awk -F'/' '{print $NF}')
+  tar xvzf $COIN_ZIP_18 >/dev/null 2>&1
+  compile_error
+  rm -f $COIN_ZIP_18 >/dev/null 2>&1
   chmod +x $COIN_NAME*
   cp $COIN_NAME* /usr/local/bin
   compile_error
