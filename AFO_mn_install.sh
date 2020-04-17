@@ -59,7 +59,7 @@ function compile_node_18() {
   cd $TMP_FOLDER
   wget $COIN_REPO_18 2>&1
   compile_error
-  COIN_ZIP_16=$(echo $COIN_REPO_18 | awk -F'/' '{print $NF}')
+  COIN_ZIP_18=$(echo $COIN_REPO_18 | awk -F'/' '{print $NF}')
   tar xvzf $COIN_ZIP_18 >/dev/null 2>&1
   compile_error
   rm -f $COIN_ZIP_18 >/dev/null 2>&1
